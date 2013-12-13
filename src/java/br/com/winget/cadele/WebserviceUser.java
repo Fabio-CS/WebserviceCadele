@@ -108,7 +108,6 @@ public class WebserviceUser {
     @Produces("application/json")
     public String userLogin(@FormParam("email") String email, @FormParam("senha") String senha) {
         UsuarioDAO userDao = new UsuarioDAO();
-        JSONObject json = new JSONObject();
         int id = userDao.getUserLogin(email, senha);
         if(id != 0){
             Usuario user = userDao.getUserById(id);

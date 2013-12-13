@@ -65,6 +65,12 @@ public class Localizacao {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
+    @Override
+    public String toString() {
+        return "Localizacao:" + "Latitude " + latitude + ", Longitude " + longitude + ", Altitude" + altitude + ", Data " + data;
+    }
+    
     
     
 }
