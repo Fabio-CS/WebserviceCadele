@@ -70,6 +70,30 @@ public class Localizacao {
     public String toString() {
         return "Localizacao:" + "Latitude " + latitude + ", Longitude " + longitude + ", Altitude" + altitude + ", Data " + data;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Localizacao other = (Localizacao) obj;
+        if (this.idUser != other.idUser) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.latitude) != Double.doubleToLongBits(other.latitude)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.longitude) != Double.doubleToLongBits(other.longitude)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.altitude) != Double.doubleToLongBits(other.altitude)) {
+            return false;
+        }
+        return true;
+    }
     
     
     

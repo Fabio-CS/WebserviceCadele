@@ -49,13 +49,13 @@ public class LocalizacaoDAO {
     }
     
     public int update(Localizacao localizacao){    
-            String sql = "UPDATE cd_localizacao SET latitude = ?, longitude = ?, altitude = ?, data = now() WHERE id = ?";
+            String sql = "UPDATE cd_localizacao SET latitude = ?, longitude = ?, altitude = ?, data = now() WHERE id_usuario = ?";
             try {
                 PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setDouble(1, localizacao.getLatitude());
                 stmt.setDouble(2, localizacao.getLongitude());
                 stmt.setDouble(3, localizacao.getAltitude());
-                stmt.setInt(4, localizacao.getId());
+                stmt.setInt(4, localizacao.getIdUser());
                 int retorno = stmt.executeUpdate();
                 stmt.close();
                 return retorno;
