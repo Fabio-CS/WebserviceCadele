@@ -87,9 +87,9 @@ public class WebserviceUser {
     @Produces("application/json")
     public String searchFriend(@PathParam("email") String email) {
         UsuarioDAO userDao = new UsuarioDAO();
-        Usuario user = userDao.getUserSearch(email);
+        ArrayList<Usuario> amigos = userDao.getUserSearch(email);
         Gson gson = new Gson();
-            return gson.toJson(user);
+        return gson.toJson(amigos);
     }
     
     @GET

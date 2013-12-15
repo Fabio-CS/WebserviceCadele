@@ -105,20 +105,23 @@ public class UsuarioDAO {
         }    
     }
     
-    public Usuario getUserSearch(String email){    
-            String sql = "SELECT u.id, u.nome, u.email FROM cd_usuario u WHERE u.email = ?";
-            Usuario user = new Usuario();
+    public ArrayList<Usuario> getUserSearch(String email){    
+            String sql = "SELECT u.id, u.nome, u.email, u.ativo FROM cd_usuario u WHERE u.email like ?";
+            ArrayList amigos = new ArrayList();
             try {    
                 PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setString(1, email);
+                stmt.setString(1, "%"+email+"%");
                 ResultSet rs = stmt.executeQuery();
                 while(rs.next()){
+                    Usuario user = new Usuario();
                     user.setId(rs.getInt("id"));
                     user.setNome(rs.getString("nome"));
                     user.setEmail(rs.getString("email"));
+                    user.setAtivo(rs.getInt("ativo"));
+                    amigos.add(user);
                 }
                 stmt.close();
-                return user;
+                return amigos;
             } catch (SQLException u) {    
                 throw new RuntimeException(u);    
         }    
